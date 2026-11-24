@@ -1,3 +1,12 @@
-a.
-b.
-c.
+a. We can keep adding points closer and closer to (0, 0), like (1/4, 1/4), (1/8, 1/8),
+(1/16, 1/16), etc. They keep going into the same side of the tree, so it turns into one long branch.
+A query around (3/4, 3/4) can finish in constant time because it is on the other side. A query near
+(0, 0) has to follow the whole branch, so it takes O(n).
+
+b. The leaf splits after 8 points, but all the copies still go into the same child. That child then
+has the same problem, so the tree can keep splitting. We can stop this by having a maximum depth or
+minimum cell size, and just let the last leaf hold more points.
+
+c. Moving or rotating the whole scene can make lots of objects cross quadtree cell boundaries, so
+much of the tree may need to be rebuilt. Rotation also changes the objects' AABBs. Quadtrees are
+better for mostly static scenes and are not as good when the whole scene changes often.
